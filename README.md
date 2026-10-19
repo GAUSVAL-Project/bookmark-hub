@@ -1,9 +1,9 @@
-# Bookmark Hub v0.2
+# Bookmark Hub v0.3
 
-既存のお気に入り管理・フォルダ・検索・HTML/JSON取り込み・IndexedDB・PWAを維持し、Google Identity Servicesのトークン方式とGoogle Drive appDataFolderへの手動JSON保存・復元を追加しました。
+お気に入りを階層フォルダと開閉できるフォルダツリーで整理する日本語PWAです。PCは左側、スマートフォンは上部のツリーで選択します。文字検索、HTML/JSON転送、Google Driveへの手動保存・復元、オフライン編集を利用できます。
 
-最初に [初心者向け更新手順](UPDATE-v0.2-ja.md) をお読みください。`public/google-config.js` のクライアントIDを設定してから既存のGitHub Actionsで配備できます。シークレットは使用しません。
+[更新手順とフォルダツリーの使い方](UPDATE-v0.3-ja.md) をお読みください。旧データは読み込めます。新JSONはversion:2です。既存DBの名前とストアは維持しています。Google連携する全端末をv0.3に更新してください。
 
-データベースとJSON形式はversion:1のままです。自動同期はありません。Drive上書き前の別名バックアップ、JSON/Drive復元前の端末内バックアップ、接続状態・最終成功日時、期限切れ・権限・通信エラーを扱います。
+`public/google-config.js` に既存のOAuthクライアントIDを引き継いでください。クライアントシークレットは使用しません。実アカウントのGoogle接続はID設定後に確認が必要です。
 
-開発: Node.js 22.12以上 / pnpm 10。`pnpm install --frozen-lockfile` → `pnpm test` → `pnpm build` → `pnpm test:e2e`。
+開発: Node.js 22.12以上 / pnpm 10。`pnpm install --frozen-lockfile` → `pnpm test` → `pnpm build` → `pnpm test:e2e`。GitHub Pagesの既存Actionsと `/bookmark-hub/` の公開パスを維持しています。

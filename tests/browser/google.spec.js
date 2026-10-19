@@ -19,7 +19,7 @@ test('Drive restore cancellation, atomic backup, invalid JSON and 401 preserve l
  await page.locator('#driveRestore').click();await page.locator('#confirmNo').click();await expect(page.locator('.card')).toHaveCount(1);
  bad=true;await page.locator('#driveRestore').click();await expect(page.locator('#status')).toContainText('処理できません');await expect(page.locator('.card')).toHaveCount(1);
  bad=false;await page.locator('#driveRestore').click();await page.locator('#confirmYes').click();await expect(page.locator('.card')).toHaveCount(0);
- const downloaded=page.waitForEvent('download');await page.locator('#recovery').click();const d=await downloaded;const fs=await import('node:fs/promises');expect(JSON.parse(await fs.readFile(await d.path(),'utf8'))).toEqual(old);
+ const downloaded=page.waitForEvent('download');await page.locator('#recovery').click();const d=await downloaded;const fs=await import('node:fs/promises');expect(JSON.parse(await fs.readFile(await d.path(),'utf8'))).toEqual({...old,version:2});
  await expect(page.locator('#lastSync')).toContainText('最終成功');unauthorized=true;await page.locator('#driveRestore').click();await expect(page.locator('#googleState')).toContainText('未接続');await expect(page.locator('#status')).toContainText('失効');
 });
 test('Drive overwrite backs up first and stops if backup fails',async({page})=>{

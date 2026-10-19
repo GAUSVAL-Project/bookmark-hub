@@ -1,7 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {GoogleDrive} from '../src/sync/google.js';
-const state={version:1,folders:[],bookmarks:[]};
+const state={version:2,folders:[],bookmarks:[]};
 function drive(fetcher){const d=new GoogleDrive(()=>{},fetcher);d.token='fake';d.expires=Date.now()+60000;return d;}
 Object.defineProperty(globalThis,'navigator',{value:{onLine:true},configurable:true});
 test('401 clears token; 403/429/500 fail without retries',async()=>{
